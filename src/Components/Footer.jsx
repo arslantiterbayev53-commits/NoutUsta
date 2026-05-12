@@ -11,7 +11,7 @@ const Footer = () => {
                     <h2 className="text-2xl font-bold mb-3">Noutusta</h2>
 
                     <p className="text-gray-400 text-sm leading-6 max-w-sm">
-                        Toshkentdagi noutbuk ta'mirlash markazi. Tez, sifatli va kafolatli xizmat.
+                        Toshkentdagi noutbuk ta'mirlash markazi. <br /> Tez, sifatli va kafolatli xizmat.
                     </p>
 
                     <p className="text-gray-500 text-xs mt-4">

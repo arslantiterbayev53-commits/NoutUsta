@@ -491,7 +491,7 @@ const HomePage = () => {
                             Usta hozir online
                         </div>
 
-                        <h2 className="text-5xl font-bold leading-tight mb-6">
+                        <h2 className="text-4xl font-bold leading-tight mb-6">
                             Noutbuk ishlamayaptimi?
                             <br />
                             Bugun hal qilamiz.
