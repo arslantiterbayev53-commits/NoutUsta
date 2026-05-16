@@ -1,6 +1,12 @@
-import React from "react";
+import { useTranslation } from "react-i18next";
+import { useServices } from "../Context/ServicesContext";
 
 const Footer = () => {
+    const { t, i18n } = useTranslation();
+    const { services } = useServices();
+    const lang = (i18n.language || "uz").slice(0, 2);
+    const footerServices = services.slice(0, 4);
+
     return (
         <footer className="bg-[#050b1a] text-white border-t border-white/10">
 
@@ -11,35 +17,39 @@ const Footer = () => {
                     <h2 className="text-2xl font-bold mb-3">Noutusta</h2>
 
                     <p className="text-gray-400 text-sm leading-6 max-w-sm">
-                        Toshkentdagi noutbuk ta'mirlash markazi. <br /> Tez, sifatli va kafolatli xizmat.
+                        {t("footer.description")}
                     </p>
 
                     <p className="text-gray-500 text-xs mt-4">
-                        © 2026 Noutusta
+                        {t("footer.copyright")}
                     </p>
                 </div>
 
                 {/* CENTER */}
                 <div>
-                    <a href="#"><h3 className="text-lg font-semibold mb-4">Xizmatlar</h3></a>
+                    <a href="#"><h3 className="text-lg font-semibold mb-4">{t("footer.services")}</h3></a>
 
                     <div className="flex flex-col gap-2 text-gray-400 text-sm">
-                        <span className="hover:text-white duration-400 "><a href="">Ekran almashtirish</a></span>
-                        <span className="hover:text-white duration-400 "><a href="">Batareya</a></span>
-                        <span className="hover:text-white duration-400 "><a href="">Motherboard</a></span>
-                        <span className="hover:text-white duration-400 "><a href="">Klaviatura</a></span>
+                        {footerServices.map((s) => {
+                            const tr = s.translations?.[lang] || s.translations?.uz || {};
+                            return (
+                                <span key={s.id} className="hover:text-white duration-400 ">
+                                    <a href="">{tr.title}</a>
+                                </span>
+                            );
+                        })}
                     </div>
                 </div>
 
                 {/* RIGHT */}
                 <div>
-                    <h3 className="text-lg font-semibold mb-4">Aloqa</h3>
+                    <h3 className="text-lg font-semibold mb-4">{t("footer.contact")}</h3>
 
                     <p className="text-gray-400 text-sm mb-4">
                         +998 91 177 12 99
                     </p>
 
-                    {/* SOCIAL ICONS (NO LIBRARY - SVG ONLY) */}
+                    {/* SOCIAL ICONS */}
                     <div className="flex gap-3">
 
                         {/* Telegram */}

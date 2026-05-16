@@ -1,81 +1,147 @@
-import React, { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import { Menu, X, ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import AdminLoginModal from "./AdminLoginModal";
+import { useAuth } from "../Context/AuthContext";
+import { useCategories } from "../Context/CategoriesContext";
+
+const LANGS = ["uz", "ru", "en"];
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [adminOpen, setAdminOpen] = useState(false);
+
+    const { t, i18n } = useTranslation();
+    const { isAdmin } = useAuth();
+    const { categories } = useCategories();
+
+    const currentLang = (i18n.language || "uz").slice(0, 2);
+
+    const changeLang = (lng) => {
+        i18n.changeLanguage(lng);
+    };
 
     const closeMobileMenu = () => {
         setMenuOpen(false);
         setDropdownOpen(false);
     };
 
+    const openAdmin = () => {
+        closeMobileMenu();
+        if (isAdmin) {
+            window.location.assign("/admin");
+        } else {
+            setAdminOpen(true);
+        }
+    };
+
     return (
         <nav className="nav">
 
             {/* LOGO */}
-            <div className="logo">
+            <Link to="/" className="logo" onClick={closeMobileMenu}>
                 <div className="dot"></div>
                 <h2>Noutusta</h2>
-            </div>
+            </Link>
 
             {/* LINKS */}
             <div className={`links ${menuOpen ? "show" : ""}`}>
 
-                <Link onClick={closeMobileMenu} to="/">Bosh Sahifa</Link>
+                <Link onClick={closeMobileMenu} to="/">{t("nav.home")}</Link>
 
-                <Link onClick={closeMobileMenu} to="/xizmatlar">Xizmatlar</Link>
+                <Link onClick={closeMobileMenu} to="/xizmatlar">{t("nav.services")}</Link>
 
                 {/* DROPDOWN */}
                 <div className="dropdown">
-                    <span
+                    <Link
+                        to="/kategoriya"
                         className="drop-title"
-                        onClick={() => setDropdownOpen(!dropdownOpen)}
+                        onClick={(e) => {
+                            if (window.innerWidth <= 900) {
+                                e.preventDefault();
+                                setDropdownOpen(!dropdownOpen);
+                            } else {
+                                closeMobileMenu();
+                            }
+                        }}
                     >
-                        Kategoriya ▾
-                    </span>
+                        {t("nav.category")} ▾
+                    </Link>
 
                     <div className={`dropdown-menu ${dropdownOpen ? "open" : ""}`}>
-                        <Link onClick={closeMobileMenu} to="/aksesuar">
-                            Aksesuar
-                        </Link>
-
-                        <Link onClick={closeMobileMenu} to="/texnika">
-                            Texnika
-                        </Link>
-
-                        <Link onClick={closeMobileMenu} to="/soft">
-                            Soft
-                        </Link>
-
-                        <Link onClick={closeMobileMenu} to="/batareya">
-                            Batareya
-                        </Link>
+                        {categories.map((cat) => {
+                            const tr = cat.translations?.[currentLang] || cat.translations?.uz || {};
+                            return (
+                                <Link
+                                    key={cat.slug}
+                                    onClick={closeMobileMenu}
+                                    to={`/categories/${cat.slug}`}
+                                >
+                                    {tr.title}
+                                </Link>
+                            );
+                        })}
                     </div>
                 </div>
 
-                <Link onClick={closeMobileMenu} to="/aloqa">Aloqa</Link>
+                <Link onClick={closeMobileMenu} to="/aloqa">{t("nav.contact")}</Link>
 
-                {/* LANGS (mobile ham bor) */}
+                {/* LANGS (mobile) */}
                 <div className="langs mobile-only">
-                    <button>UZ</button>
-                    <button>RU</button>
-                    <button>EN</button>
+                    {LANGS.map((lng) => (
+                        <button
+                            key={lng}
+                            onClick={() => changeLang(lng)}
+                            className={currentLang === lng ? "active" : ""}
+                        >
+                            {lng.toUpperCase()}
+                        </button>
+                    ))}
                 </div>
+
+                {/* ADMIN BUTTON (mobile) */}
+                <button
+                    type="button"
+                    className="admin-btn mobile-only"
+                    onClick={openAdmin}
+                >
+                    <ShieldCheck size={14} />
+                    {t("nav.admin")}
+                </button>
             </div>
 
-            {/* LANGS (desktop) */}
-            <div className="langs desktop-only">
-                <button>UZ</button>
-                <button>RU</button>
-                <button>EN</button>
+            {/* RIGHT SIDE (desktop) */}
+            <div className="right-actions desktop-only">
+                <div className="langs">
+                    {LANGS.map((lng) => (
+                        <button
+                            key={lng}
+                            onClick={() => changeLang(lng)}
+                            className={currentLang === lng ? "active" : ""}
+                        >
+                            {lng.toUpperCase()}
+                        </button>
+                    ))}
+                </div>
+
+                <button
+                    type="button"
+                    className="admin-btn"
+                    onClick={openAdmin}
+                >
+                    <ShieldCheck size={14} />
+                    {t("nav.admin")}
+                </button>
             </div>
 
             {/* BURGER */}
             <div className="burger" onClick={() => setMenuOpen(!menuOpen)}>
                 {menuOpen ? <X /> : <Menu />}
             </div>
+
+            <AdminLoginModal open={adminOpen} onClose={() => setAdminOpen(false)} />
 
             {/* STYLE */}
             <style>{`
@@ -98,6 +164,7 @@ const Navbar = () => {
                     display:flex;
                     align-items:center;
                     gap:10px;
+                    text-decoration:none;
                 }
 
                 .dot{
@@ -142,15 +209,13 @@ const Navbar = () => {
 
                 .dropdown-menu{
                     position:absolute;
-                    top:35px;
+                    top:calc(100% + 16px);
                     left:0;
                     background:#0b1426;
                     border:1px solid rgba(255,255,255,0.08);
                     border-radius:12px;
                     padding:8px;
                     min-width:180px;
-
-                    /* animation fix */
                     opacity:0;
                     transform:translateY(10px);
                     pointer-events:none;
@@ -177,10 +242,17 @@ const Navbar = () => {
                     color:#fff;
                 }
 
+                /* RIGHT ACTIONS */
+                .right-actions{
+                    display:flex;
+                    align-items:center;
+                    gap:14px;
+                }
+
                 /* LANG */
                 .langs{
                     display:flex;
-                    gap:8px;
+                    gap:6px;
                 }
 
                 .langs button{
@@ -197,6 +269,35 @@ const Navbar = () => {
                 .langs button:hover{
                     background:rgba(42,130,245,0.15);
                     color:#fff;
+                }
+
+                .langs button.active{
+                    background:rgba(42,130,245,0.2);
+                    border-color:rgba(42,130,245,0.5);
+                    color:#fff;
+                }
+
+                /* ADMIN BUTTON */
+                .admin-btn{
+                    display:inline-flex;
+                    align-items:center;
+                    gap:6px;
+                    padding:7px 14px;
+                    border-radius:8px;
+                    border:1px solid rgba(42,130,245,0.4);
+                    background:rgba(42,130,245,0.12);
+                    color:#bcd5fa;
+                    font-size:12px;
+                    font-weight:600;
+                    cursor:pointer;
+                    transition:0.2s;
+                    letter-spacing:0.3px;
+                }
+
+                .admin-btn:hover{
+                    background:rgba(42,130,245,0.25);
+                    color:#fff;
+                    border-color:rgba(42,130,245,0.65);
                 }
 
                 /* BURGER */
@@ -250,6 +351,24 @@ const Navbar = () => {
                 @media(min-width:901px){
                     .mobile-only{
                         display:none;
+                    }
+
+                    /* invisible bridge so the cursor can travel
+                       from the title to the menu without losing hover */
+                    .dropdown::after{
+                        content:"";
+                        position:absolute;
+                        left:0;
+                        top:100%;
+                        width:100%;
+                        height:24px;
+                    }
+
+                    .dropdown:hover .dropdown-menu,
+                    .dropdown-menu:hover{
+                        opacity:1;
+                        transform:translateY(0);
+                        pointer-events:auto;
                     }
                 }
 
