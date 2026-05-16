@@ -1,54 +1,74 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { defaultServices } from "../data/defaultServices";
-
-const STORAGE_KEY = "noutusta_services";
+import { db } from "../firebase";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+  setDoc,
+} from "firebase/firestore";
 
 const ServicesContext = createContext(null);
 
-const loadFromStorage = () => {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return defaultServices;
-    const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed) || parsed.length === 0) return defaultServices;
-    return parsed;
-  } catch {
-    return defaultServices;
-  }
-};
-
-const genId = () => `svc-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
-
 export const ServicesProvider = ({ children }) => {
-  const [services, setServices] = useState(loadFromStorage);
+  const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(services));
-  }, [services]);
+    const fetchServices = async () => {
+      try {
+        const snapshot = await getDocs(collection(db, "services"));
+        if (snapshot.empty) {
+          for (const svc of defaultServices) {
+            await setDoc(doc(db, "services", svc.id), svc);
+          }
+          setServices(defaultServices);
+        } else {
+          const data = snapshot.docs.map((d) => ({ id: d.id, ...d.data() }));
+          setServices(data);
+        }
+      } catch (err) {
+        console.error(err);
+        setServices(defaultServices);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchServices();
+  }, []);
 
-  const addService = (data) => {
-    const newService = { ...data, id: genId() };
-    setServices((prev) => [...prev, newService]);
-    return newService;
+  const addService = async (data) => {
+    const ref = await addDoc(collection(db, "services"), data);
+    const newSvc = { ...data, id: ref.id };
+    setServices((prev) => [...prev, newSvc]);
+    return newSvc;
   };
 
-  const updateService = (id, data) => {
+  const updateService = async (id, data) => {
+    await updateDoc(doc(db, "services", id), data);
     setServices((prev) =>
       prev.map((s) => (s.id === id ? { ...s, ...data, id } : s))
     );
   };
 
-  const deleteService = (id) => {
+  const deleteService = async (id) => {
+    await deleteDoc(doc(db, "services", id));
     setServices((prev) => prev.filter((s) => s.id !== id));
   };
 
-  const resetServices = () => {
+  const resetServices = async () => {
+    for (const svc of defaultServices) {
+      await setDoc(doc(db, "services", svc.id), svc);
+    }
     setServices(defaultServices);
   };
 
   return (
     <ServicesContext.Provider
-      value={{ services, addService, updateService, deleteService, resetServices }}
+      value={{ services, loading, addService, updateService, deleteService, resetServices }}
     >
       {children}
     </ServicesContext.Provider>
@@ -59,4 +79,4 @@ export const useServices = () => {
   const ctx = useContext(ServicesContext);
   if (!ctx) throw new Error("useServices must be used within ServicesProvider");
   return ctx;
-};
+};  

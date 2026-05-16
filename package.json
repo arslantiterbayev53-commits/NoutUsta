@@ -13,6 +13,7 @@
     "@tabler/icons-webfont": "^3.44.0",
     "@tailwindcss/vite": "^4.3.0",
     "aos": "^2.3.4",
+    "firebase": "^12.13.0",
     "flowbite": "^4.0.1",
     "flowbite-react": "^0.12.17",
     "i18next": "^26.1.0",
