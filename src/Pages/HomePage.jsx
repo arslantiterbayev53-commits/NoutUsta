@@ -81,13 +81,13 @@ const HomePage = () => {
                         </div>
 
                         <div className="flex flex-wrap gap-4">
-                            <a href="http://localhost:5173/aloqa">
+                            <a href="/aloqa">
                                 <button className="px-7 clear-both cursor-pointer py-4 rounded-2xl bg-blue-600 hover:bg-blue-500 transition font-semibold">
                                     {t("hero.ctaPrimary")}
                                 </button>
                             </a>
 
-                            <a href="http://localhost:5173/xizmatlar">
+                            <a href="/xizmatlar">
                                 <button className="px-7 clear-both cursor-pointer py-4 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition">
                                     {t("hero.ctaSecondary")}
                                 </button>
@@ -103,7 +103,7 @@ const HomePage = () => {
                             <div className="flex justify-between items-center mb-8">
                                 <div>
                                     <p className="text-sm text-gray-400">{t("hero.status")}</p>
-                                    <div className="flex  items-center gap-5">
+                                    <div className="flex items-center gap-5">
                                         <div className="w-5 h-5 mt-3 rounded-full bg-green-400 animate-pulse"></div>
                                         <h3 className="text-2xl font-bold mt-1">{t("hero.statusOpen")}</h3>
                                     </div>
@@ -157,9 +157,7 @@ const HomePage = () => {
                             <div className="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-5">
                                 <item.icon className="text-blue-400" />
                             </div>
-
                             <h3 className="text-xl font-semibold">{item.title}</h3>
-
                             <p className="text-gray-400 mt-2">{item.text}</p>
                         </div>
                     ))}
@@ -172,10 +170,7 @@ const HomePage = () => {
                     <p className="text-cyan-300 uppercase tracking-[4px] text-sm mb-3">
                         {t("services.label")}
                     </p>
-
-                    <h2 className="text-4xl font-bold">
-                        {t("services.title")}
-                    </h2>
+                    <h2 className="text-4xl font-bold">{t("services.title")}</h2>
                 </div>
 
                 <div className="grid lg:grid-cols-3 gap-6">
@@ -191,12 +186,8 @@ const HomePage = () => {
                                 <div className="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6">
                                     <ServiceIcon name={item.icon} className="text-blue-400" size={30} />
                                 </div>
-
                                 <h3 className="text-2xl font-semibold mb-3">{tr.title}</h3>
-
-                                <p className="text-gray-400 leading-7 mb-7">
-                                    {tr.description}
-                                </p>
+                                <p className="text-gray-400 leading-7 mb-7">{tr.description}</p>
                             </div>
                         );
                     })}
@@ -209,10 +200,7 @@ const HomePage = () => {
                     <p className="text-cyan-300 uppercase tracking-[4px] text-sm mb-3">
                         {t("advantages.label")}
                     </p>
-
-                    <h2 className="text-4xl font-bold">
-                        {t("advantages.title")}
-                    </h2>
+                    <h2 className="text-4xl font-bold">{t("advantages.title")}</h2>
                 </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -226,7 +214,6 @@ const HomePage = () => {
                             <div className="w-14 h-14 rounded-2xl bg-cyan-500/10 flex items-center justify-center">
                                 <CheckCircle2 className="text-cyan-300" />
                             </div>
-
                             <div>
                                 <h3 className="text-xl font-semibold">{item}</h3>
                             </div>
@@ -246,51 +233,15 @@ const HomePage = () => {
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {[
-                        {
-                            name: "Alisher",
-                            text: "Laptop umuman yoqilmay qolgandi, olib borib berishdi 1 kunda qilib berdi, yaxshi chiqdi.",
-                            rating: 4.6,
-                        },
-                        {
-                            name: "Malika",
-                            text: "Suv to‘kilib ketgan edi, ishlayapti hozir, lekin biroz vaqt ketdi. baribir yaxshi.",
-                            rating: 4.3,
-                        },
-                        {
-                            name: "Jasur",
-                            text: "Uyga kelib qilib berdi, tezda tugatdi. umuman kutmagan edim shunaqa tez bo‘lishini.",
-                            rating: 4.8,
-                        },
-                        {
-                            name: "Shahzod",
-                            text: "Ekran almashtirishdi, rangi ozgina farq qilyapti lekin yaxshi.",
-                            rating: 4.2,
-                        },
-                        {
-                            name: "Dilshod",
-                            text: "Qizib ketardi laptop, tozalab berdi endi yaxshi ishlayapti.",
-                            rating: 4.7,
-                        },
-                        {
-                            name: "Nodira",
-                            text: "Klaviatura bosilmay qolgandi, tez qilib berishdi, rahmat.",
-                            rating: 4.4,
-                        },
-                        {
-                            name: "Farrux",
-                            text: "MacBook batareyasini almashtirib berishdi. Haqiqiy original qo'yildi, quvvati juda yaxshi yetyapti.",
-                            rating: 4.9,
-                        },
-                        {
-                            name: "Zilola",
-                            text: "Windows tizimini qayta o'rnatib, hamma kerakli dasturlarni sozlab berishdi. Ishlash tezligi ancha oshdi.",
-                            rating: 4.5,
-                        },
-                        {
-                            name: "Sardor",
-                            text: "Kuleridan juda qattiq shovqin chiqayotgandi. Moylab, tozalab berishgach umuman ovozi chiqmay qoldi.",
-                            rating: 4.7,
-                        },
+                        { name: "Alisher", text: "Laptop umuman yoqilmay qolgandi, olib borib berishdi 1 kunda qilib berdi, yaxshi chiqdi.", rating: 4.6 },
+                        { name: "Malika", text: "Suv to'kilib ketgan edi, ishlayapti hozir, lekin biroz vaqt ketdi. baribir yaxshi.", rating: 4.3 },
+                        { name: "Jasur", text: "Uyga kelib qilib berdi, tezda tugatdi. umuman kutmagan edim shunaqa tez bo'lishini.", rating: 4.8 },
+                        { name: "Shahzod", text: "Ekran almashtirishdi, rangi ozgina farq qilyapti lekin yaxshi.", rating: 4.2 },
+                        { name: "Dilshod", text: "Qizib ketardi laptop, tozalab berdi endi yaxshi ishlayapti.", rating: 4.7 },
+                        { name: "Nodira", text: "Klaviatura bosilmay qolgandi, tez qilib berishdi, rahmat.", rating: 4.4 },
+                        { name: "Farrux", text: "MacBook batareyasini almashtirib berishdi. Haqiqiy original qo'yildi, quvvati juda yaxshi yetyapti.", rating: 4.9 },
+                        { name: "Zilola", text: "Windows tizimini qayta o'rnatib, hamma kerakli dasturlarni sozlab berishdi. Ishlash tezligi ancha oshdi.", rating: 4.5 },
+                        { name: "Sardor", text: "Kuleridan juda qattiq shovqin chiqayotgandi. Moylab, tozalab berishgach umuman ovozi chiqmay qoldi.", rating: 4.7 },
                     ].map((item, index) => (
                         <div
                             key={item.name}
@@ -308,7 +259,6 @@ const HomePage = () => {
                                         </span>
                                     ))}
                                 </div>
-
                                 <span className="text-gray-400 text-sm font-medium bg-white/5 px-2 py-0.5 rounded-lg border border-white/5">
                                     {item.rating}
                                 </span>
@@ -322,7 +272,6 @@ const HomePage = () => {
                                 <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center font-bold text-blue-300 border border-blue-500/10 group-hover:scale-105 transition-transform duration-300">
                                     {item.name[0]}
                                 </div>
-
                                 <div>
                                     <h4 className="font-semibold text-white group-hover:text-blue-300 transition-colors duration-300">
                                         {item.name}
@@ -335,7 +284,6 @@ const HomePage = () => {
                 </div>
             </section>
 
-
             {/* GALLERY */}
             <section className="px-5 md:px-14 pb-24" data-aos="fade-up">
                 <div className="mb-12" data-aos="fade-up">
@@ -346,117 +294,63 @@ const HomePage = () => {
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[160px] md:auto-rows-[200px] gap-4">
-
                     <div className="col-span-2 row-span-2 rounded-3xl overflow-hidden" data-aos="zoom-in">
-                        <img
-                            src="https://www.ustabor.uz/upload/%D0%95%D0%A1%D0%A6%20%D0%BD%D0%BE%D0%B2%D0%B0%D1%8F/%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D1%82%20%D0%BA%D0%BE%D0%BC%D0%BF%D1%8C%D1%8E%D1%82%D0%B5%D1%80%D0%BE%D0%B2.jpg"
-                            className="w-full h-full object-cover hover:scale-105 transition duration-500"
-                        />
+                        <img src="https://www.ustabor.uz/upload/%D0%95%D0%A1%D0%A6%20%D0%BD%D0%BE%D0%B2%D0%B0%D1%8F/%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D1%82%20%D0%BA%D0%BE%D0%BC%D0%BF%D1%8C%D1%8E%D1%82%D0%B5%D1%80%D0%BE%D0%B2.jpg" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
                     </div>
-
                     <div className="rounded-3xl overflow-hidden" data-aos="zoom-in" data-aos-delay="100">
-                        <img
-                            src="https://cdn.thewirecutter.com/wp-content/media/2020/12/cleaningdirtylaptop-2048px-0006-2x1-1.jpg?width=2048&quality=75&crop=2:1&auto=webp"
-                            className="w-full h-full object-cover hover:scale-105 transition duration-500"
-                        />
+                        <img src="https://cdn.thewirecutter.com/wp-content/media/2020/12/cleaningdirtylaptop-2048px-0006-2x1-1.jpg?width=2048&quality=75&crop=2:1&auto=webp" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
                     </div>
-
                     <div className="rounded-3xl overflow-hidden" data-aos="zoom-in" data-aos-delay="200">
-                        <img
-                            src="https://rrservice.ru/wp-content/uploads/2019/02/remont_laptops.jpg"
-                            className="w-full h-full object-cover hover:scale-105 transition duration-500"
-                        />
+                        <img src="https://rrservice.ru/wp-content/uploads/2019/02/remont_laptops.jpg" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
                     </div>
-
                     <div className="rounded-3xl overflow-hidden" data-aos="zoom-in" data-aos-delay="300">
-                        <img
-                            src="https://imageio.forbes.com/specials-images/imageserve/5f724c7ef0f450e48d989d5d/0x0.jpg?format=jpg&crop=6000,3375,x0,y304,safe&height=900&width=1600&fit=bounds"
-                            className="w-full h-full object-cover hover:scale-105 transition duration-500"
-                        />
+                        <img src="https://imageio.forbes.com/specials-images/imageserve/5f724c7ef0f450e48d989d5d/0x0.jpg?format=jpg&crop=6000,3375,x0,y304,safe&height=900&width=1600&fit=bounds" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
                     </div>
-
                     <div className="rounded-3xl overflow-hidden" data-aos="zoom-in" data-aos-delay="400">
-                        <img
-                            src="https://кампутарная.бел/img/news/remont-akk.webp"
-                            className="w-full h-full object-cover hover:scale-105 transition duration-500"
-                        />
+                        <img src="https://кампутарная.бел/img/news/remont-akk.webp" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
                     </div>
-
                     <div className="col-span-2 rounded-3xl overflow-hidden" data-aos="zoom-in" data-aos-delay="150">
-                        <img
-                            src="https://nice-case.ru/upload/medialibrary/dda/xuzpxbkzmkowo4qn41f11ofp8m932fos.JPG"
-                            className="w-full h-full object-cover hover:scale-105 transition duration-500"
-                        />
+                        <img src="https://nice-case.ru/upload/medialibrary/dda/xuzpxbkzmkowo4qn41f11ofp8m932fos.JPG" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
                     </div>
-
                     <div className="rounded-3xl overflow-hidden" data-aos="zoom-in" data-aos-delay="250">
-                        <img
-                            src="https://freshit.ua/images/0000000206/zamena-zhestkogo-diska-v%20noutbuke-na-hdd-big.jpg"
-                            className="w-full h-full object-cover hover:scale-105 transition duration-500"
-                        />
+                        <img src="https://freshit.ua/images/0000000206/zamena-zhestkogo-diska-v%20noutbuke-na-hdd-big.jpg" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
                     </div>
-
                     <div className="rounded-3xl overflow-hidden" data-aos="zoom-in" data-aos-delay="350">
-                        <img
-                            src="https://itg23.ru/wp-content/uploads/2019/07/bg14.jpg"
-                            className="w-full h-full object-cover hover:scale-105 transition duration-500"
-                        />
+                        <img src="https://itg23.ru/wp-content/uploads/2019/07/bg14.jpg" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
                     </div>
-
                 </div>
-
             </section>
 
             {/* CTA */}
             <section className="px-5 md:px-14 pb-24" data-aos="fade-up">
                 <div className="relative overflow-hidden rounded-[40px] border border-blue-500/20 bg-linear-to-br from-[#07111f] to-[#0f1f3b] p-10 md:p-16 text-center">
-
                     <div className="absolute -top-25 left-1/2 -translate-x-1/2 w-125 h-75 bg-blue-500/20 blur-[120px]"></div>
-
                     <div className="relative">
-
                         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-sm mb-6">
                             <Wrench size={16} />
                             {t("cta.badge")}
                         </div>
-
                         <h2 className="text-4xl font-bold leading-tight mb-6">
-                            {t("cta.title1")}
-                            <br />
-                            {t("cta.title2")}
+                            {t("cta.title1")}<br />{t("cta.title2")}
                         </h2>
-
                         <p className="text-gray-400 text-lg max-w-175 mx-auto leading-8 mb-10">
                             {t("cta.description")}
                         </p>
-
                         <div className="flex flex-wrap justify-center gap-4">
-
-                            <a
-                                href="https://t.me/begaliyev1299"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
+                            <a href="https://t.me/begaliyev1299" target="_blank" rel="noopener noreferrer">
                                 <button className="px-8 py-4 rounded-2xl bg-blue-600 hover:bg-blue-500 transition font-semibold flex items-center gap-2">
                                     <Send size={18} />
                                     {t("cta.telegram")}
                                 </button>
                             </a>
-
-                            <a
-                                href="tel:+998911771299"
-                                className="px-8 py-4 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition flex items-center gap-2"
-                            >
+                            <a href="tel:+998911771299" className="px-8 py-4 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition flex items-center gap-2">
                                 <Phone size={18} />
                                 {t("cta.call")}
                             </a>
-
                         </div>
-
                     </div>
                 </div>
             </section>
-
         </div>
     );
 };
