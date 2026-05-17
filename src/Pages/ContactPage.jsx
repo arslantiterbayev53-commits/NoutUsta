@@ -4,6 +4,7 @@ import "aos/dist/aos.css";
 import { useTranslation } from "react-i18next";
 import { Phone, Send, MapPin, Clock3 } from "lucide-react";
 
+// Aniq noutbuk SVG ikonkasi
 const LaptopIcon = ({ size = 24, className = "" }) => (
   <svg
     width={size}
@@ -11,15 +12,19 @@ const LaptopIcon = ({ size = 24, className = "" }) => (
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    strokeWidth={1.6}
+    strokeWidth={1.5}
     strokeLinecap="round"
     strokeLinejoin="round"
     className={className}
   >
-    <rect x="2" y="4" width="20" height="13" rx="2" />
-    <line x1="8" y1="21" x2="16" y2="21" />
-    <line x1="12" y1="17" x2="12" y2="21" />
-    <circle cx="12" cy="10.5" r="1.5" />
+    {/* Ekran */}
+    <rect x="2" y="3" width="20" height="14" rx="2" />
+    {/* Klaviatura taglik */}
+    <path d="M1 21h22" />
+    <path d="M7 21l1.5-4h7L17 21" />
+    {/* Ekran ichidagi chiziqlar (dekorativ) */}
+    <line x1="6" y1="7" x2="18" y2="7" strokeWidth={1} opacity={0.5} />
+    <line x1="6" y1="10" x2="14" y2="10" strokeWidth={1} opacity={0.5} />
   </svg>
 );
 
@@ -101,29 +106,29 @@ const ContactPage = () => {
             })}
           </div>
 
-          {/* RIGHT: map — telefonda to'liq ekran balandligi */}
+          {/* RIGHT: map — telefonda h-[400px], desktopda flex-1 */}
           <div
             data-aos="fade-left"
-            className="relative flex-1 min-h-screen lg:min-h-[500px] rounded-[28px] overflow-hidden border border-white/10"
+            className="relative h-[400px] lg:flex-1 lg:h-auto lg:min-h-[500px] rounded-[28px] overflow-hidden border border-white/10"
           >
             <div className="absolute -top-10 -right-10 w-60 h-60 bg-blue-500/20 blur-[80px] rounded-full pointer-events-none z-10" />
 
+            {/* Malika savdo markazi: 41.2995° N, 69.2401° E */}
             <iframe
               title="Malika bozori xarita"
-              src="https://yandex.uz/map-widget/v1/?ll=69.273100%2C41.337780&z=17&pt=69.273100,41.337780,pm2bll"
+              src="https://yandex.uz/map-widget/v1/?ll=69.240100%2C41.299500&z=17&pt=69.240100,41.299500,pm2bll"
               width="100%"
               height="100%"
               style={{
                 border: 0,
                 filter: "invert(92%) hue-rotate(180deg) saturate(0.8) brightness(0.85)",
                 display: "block",
-                minHeight: "inherit",
               }}
               allowFullScreen
               loading="lazy"
             />
 
-            {/* Overlay card pastda */}
+            {/* Overlay */}
             <div className="absolute bottom-4 left-4 right-4 z-20 bg-[#020817]/80 backdrop-blur-md border border-blue-500/20 rounded-2xl px-5 py-4 flex items-center gap-4">
               <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0">
                 <LaptopIcon size={20} className="text-blue-400" />
