@@ -16,6 +16,13 @@ import {
 import ServiceIcon from "../Components/ServiceIcon";
 import { useServices } from "../Context/ServicesContext";
 
+import rasm1 from "../assets/rasm1.jpg";
+import rasm2 from "../assets/rasm2.jpg";
+import rasm3 from "../assets/rasm3.jpg";
+import rasm4 from "../assets/rasm4.jpg";
+import rasm5 from "../assets/rasm5.jpg";
+import rasm6 from "../assets/rasm6.jpg";
+
 const HomePage = () => {
     const { t, i18n } = useTranslation();
     const { services } = useServices();
@@ -285,7 +292,6 @@ const HomePage = () => {
             </section>
 
             {/* GALLERY */}
-            {/* GALLERY */}
             <section className="px-5 md:px-14 pb-24" data-aos="fade-up">
                 <div className="mb-12" data-aos="fade-up">
                     <p className="text-cyan-300 uppercase tracking-[4px] text-sm mb-3">
@@ -296,28 +302,28 @@ const HomePage = () => {
 
                 <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[160px] md:auto-rows-[200px] gap-4">
                     <div className="col-span-2 row-span-2 rounded-3xl overflow-hidden" data-aos="zoom-in">
-                        <img src="./assets/rasm1.jpg" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
+                        <img src={rasm1} className="w-full h-full object-cover hover:scale-105 transition duration-500" />
                     </div>
                     <div className="rounded-3xl overflow-hidden" data-aos="zoom-in" data-aos-delay="100">
-                        <img src="./assets/rasm2.jpg" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
+                        <img src={rasm2} className="w-full h-full object-cover hover:scale-105 transition duration-500" />
                     </div>
                     <div className="rounded-3xl overflow-hidden" data-aos="zoom-in" data-aos-delay="200">
-                        <img src="./assets/rasm3.jpg" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
+                        <img src={rasm3} className="w-full h-full object-cover hover:scale-105 transition duration-500" />
                     </div>
                     <div className="rounded-3xl overflow-hidden" data-aos="zoom-in" data-aos-delay="300">
-                        <img src="./assets/rasm4.jpg" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
+                        <img src={rasm4} className="w-full h-full object-cover hover:scale-105 transition duration-500" />
                     </div>
                     <div className="rounded-3xl overflow-hidden" data-aos="zoom-in" data-aos-delay="400">
-                        <img src="./assets/rasm5.jpg" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
+                        <img src={rasm5} className="w-full h-full object-cover hover:scale-105 transition duration-500" />
                     </div>
                     <div className="col-span-2 rounded-3xl overflow-hidden" data-aos="zoom-in" data-aos-delay="150">
-                        <img src="./assets/rasm6.jpg" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
+                        <img src={rasm6} className="w-full h-full object-cover hover:scale-105 transition duration-500" />
                     </div>
                     <div className="rounded-3xl overflow-hidden" data-aos="zoom-in" data-aos-delay="250">
-                        <img src="./assets/rasm1.jpg" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
+                        <img src={rasm1} className="w-full h-full object-cover hover:scale-105 transition duration-500" />
                     </div>
                     <div className="rounded-3xl overflow-hidden" data-aos="zoom-in" data-aos-delay="350">
-                        <img src="./assets/rasm2.jpg" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
+                        <img src={rasm2} className="w-full h-full object-cover hover:scale-105 transition duration-500" />
                     </div>
                 </div>
             </section>
