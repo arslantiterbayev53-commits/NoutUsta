@@ -285,6 +285,7 @@ const HomePage = () => {
             </section>
 
             {/* GALLERY */}
+            {/* GALLERY */}
             <section className="px-5 md:px-14 pb-24" data-aos="fade-up">
                 <div className="mb-12" data-aos="fade-up">
                     <p className="text-cyan-300 uppercase tracking-[4px] text-sm mb-3">
@@ -295,28 +296,28 @@ const HomePage = () => {
 
                 <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[160px] md:auto-rows-[200px] gap-4">
                     <div className="col-span-2 row-span-2 rounded-3xl overflow-hidden" data-aos="zoom-in">
-                        <img src="https://www.ustabor.uz/upload/%D0%95%D0%A1%D0%A6%20%D0%BD%D0%BE%D0%B2%D0%B0%D1%8F/%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D1%82%20%D0%BA%D0%BE%D0%BC%D0%BF%D1%8C%D1%8E%D1%82%D0%B5%D1%80%D0%BE%D0%B2.jpg" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
+                        <img src="./assets/rasm1.jpg" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
                     </div>
                     <div className="rounded-3xl overflow-hidden" data-aos="zoom-in" data-aos-delay="100">
-                        <img src="https://cdn.thewirecutter.com/wp-content/media/2020/12/cleaningdirtylaptop-2048px-0006-2x1-1.jpg?width=2048&quality=75&crop=2:1&auto=webp" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
+                        <img src="./assets/rasm2.jpg" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
                     </div>
                     <div className="rounded-3xl overflow-hidden" data-aos="zoom-in" data-aos-delay="200">
-                        <img src="https://rrservice.ru/wp-content/uploads/2019/02/remont_laptops.jpg" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
+                        <img src="./assets/rasm3.jpg" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
                     </div>
                     <div className="rounded-3xl overflow-hidden" data-aos="zoom-in" data-aos-delay="300">
-                        <img src="https://imageio.forbes.com/specials-images/imageserve/5f724c7ef0f450e48d989d5d/0x0.jpg?format=jpg&crop=6000,3375,x0,y304,safe&height=900&width=1600&fit=bounds" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
+                        <img src="./assets/rasm4.jpg" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
                     </div>
                     <div className="rounded-3xl overflow-hidden" data-aos="zoom-in" data-aos-delay="400">
-                        <img src="https://кампутарная.бел/img/news/remont-akk.webp" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
+                        <img src="./assets/rasm5.jpg" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
                     </div>
                     <div className="col-span-2 rounded-3xl overflow-hidden" data-aos="zoom-in" data-aos-delay="150">
-                        <img src="https://nice-case.ru/upload/medialibrary/dda/xuzpxbkzmkowo4qn41f11ofp8m932fos.JPG" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
+                        <img src="./assets/rasm6.jpg" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
                     </div>
                     <div className="rounded-3xl overflow-hidden" data-aos="zoom-in" data-aos-delay="250">
-                        <img src="https://freshit.ua/images/0000000206/zamena-zhestkogo-diska-v%20noutbuke-na-hdd-big.jpg" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
+                        <img src="./assets/rasm1.jpg" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
                     </div>
                     <div className="rounded-3xl overflow-hidden" data-aos="zoom-in" data-aos-delay="350">
-                        <img src="https://itg23.ru/wp-content/uploads/2019/07/bg14.jpg" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
+                        <img src="./assets/rasm2.jpg" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
                     </div>
                 </div>
             </section>
