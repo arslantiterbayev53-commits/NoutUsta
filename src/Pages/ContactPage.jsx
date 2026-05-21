@@ -41,8 +41,8 @@ const ContactPage = () => {
     {
       icon: Send,
       label: t("contactPage.telegram"),
-      value: "@begaliyev1299",
-      href: "https://t.me/begaliyev1299",
+      value: "@Noutustauz",
+      href: "https://t.me/Noutustauz",
     },
     {
       icon: MapPin,

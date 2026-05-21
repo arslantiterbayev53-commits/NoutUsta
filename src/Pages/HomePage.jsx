@@ -344,7 +344,7 @@ const HomePage = () => {
                             {t("cta.description")}
                         </p>
                         <div className="flex flex-wrap justify-center gap-4">
-                            <a href="https://t.me/begaliyev1299" target="_blank" rel="noopener noreferrer">
+                            <a href="https://t.me/Noutustauz" target="_blank" rel="noopener noreferrer">
                                 <button className="px-8 py-4 rounded-2xl bg-blue-600 hover:bg-blue-500 transition font-semibold flex items-center gap-2">
                                     <Send size={18} />
                                     {t("cta.telegram")}
