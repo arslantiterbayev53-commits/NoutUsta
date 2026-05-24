@@ -358,6 +358,20 @@ const HomePage = () => {
                     </div>
                 </div>
             </section>
+
+            {/* FIXED CALL BUTTON */}
+            <a
+                href="tel:+998911771299"
+                className="fixed bottom-6 right-6 z-50 flex items-center gap-3 px-5 py-4 rounded-2xl bg-blue-600 hover:bg-blue-500 active:scale-95 transition-all duration-200 shadow-lg shadow-blue-500/30 border border-blue-400/20 backdrop-blur-sm"
+            >
+                <div className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center">
+                    <Phone size={20} className="text-white" />
+                </div>
+                <div className="hidden sm:block">
+                    <p className="text-xs text-blue-200 leading-none mb-0.5">{t("cta.call")}</p>
+                    <p className="text-sm font-semibold text-white leading-none">+998 91 177 12 99</p>
+                </div>
+            </a>
         </div>
     );
 };
